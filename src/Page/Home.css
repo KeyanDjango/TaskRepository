@@ -1,0 +1,13 @@
+body{
+    padding:0;
+    margin:0;
+}
+.txt-home{
+    background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+    width:1200px;
+    height:500px;
+    color:white;
+    border-radius:100px;
+    font-weight:bold;
+
+}

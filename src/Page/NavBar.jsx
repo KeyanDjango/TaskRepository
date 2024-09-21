@@ -10,10 +10,10 @@ export default function NavBar() {
             {/* Logo Text */}
             <div className="top-nav">
                 <div style={{color:'white',fontWeight:'bold',fontSize:'55px'}}>
-                    <span>Logo</span>
+                    <Link to='/' style={{textDecoration:'none',color:'white'}}> <span>Logo</span> </Link>
                 </div>
             {/* ICON */}
-                <div  style={{marginTop:1}}>
+                <div  style={{marginTop:1,marginLeft:200}}>
                 <GiAtom size={80} color='white'/>
                 </div>
             {/* left nav */}

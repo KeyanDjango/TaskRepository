@@ -1,11 +1,18 @@
 import React from 'react';
+import './Home.css';
 
-
-export default function Home(){
-    return(
+export default function Home() {
+    return (
         <>
-         <h1 style={{textAlign:'center',marginTop:10,fontWeight:'bold',fontSize:340}}>HOME</h1>
-         <hr/>
+            <center>
+                <div className="txt-home">
+                    <h1 style={{ textAlign: 'center', marginTop: 10, fontWeight: 'bold', fontSize: 340 }}>HOME</h1>
+                </div>
+            </center>
+
+
+            <hr />
+
         </>
     )
 }

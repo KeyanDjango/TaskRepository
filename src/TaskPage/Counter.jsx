@@ -1,20 +1,43 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useReducer,useEffect } from 'react';
 import '../TaskPage/Task.css'
+
+const initialstate = { count: 0 };
+
+function reducerfun(state, action) {
+    switch (action.type) {
+        case 'INCREMENT':
+            return { count: state.count + 1 };
+        case 'DECREMENT':
+            return{count: state.count -1}
+        default:
+            throw new Error();
+    }
+}
 
 export default function Counter() {
 
     const [count, setCount] = useState(0);
     const [txt, setTxt] = useState('');
     const txtfocus = useRef();
-    const [no1,setNo1] = useState(''); 
-    const [no2,setNo2] = useState('');
-    const [res,setRes] = useState(0);
+    const [no1, setNo1] = useState('');
+    const [no2, setNo2] = useState('');
+    const [res, setRes] = useState(0);
 
-    const handleClickRes = () =>{
-        setRes(parseInt(no1) + parseInt(no2));
-        setNo1('');
-        setNo2('');
-        
+    useEffect(() => {
+        console.log('HI HI')
+    })
+
+    const [state, dispatch] = useReducer(reducerfun, initialstate);
+
+
+    const handleClickRes = () => {
+        if (no1.length > 0 && no2.length > 0 && no1.trim !== '' && no2.trim !== '') {
+            const calculate = eval(parseInt(no1) + parseInt(no2));
+            setRes(parseInt(calculate));
+        }
+        else {
+            alert('Invalid Input')
+        }
     }
 
     const handleClickFocus = () => {
@@ -68,29 +91,40 @@ export default function Counter() {
 
                         <button onClick={() => handleClickFocus()} style={{ color: 'black', width: 250, height: 40, fontWeight: 'bold' }}>Focus</button><br /> <br />
 
-                        <button  onClick={() => setTxt('')}  style={{width:300,height:40,borderRadius:10,border:'0.5px solid black'}}>CLEAR</button>
+                        <button onClick={() => setTxt('')} style={{ width: 300, height: 40, borderRadius: 10, border: '0.5px solid black' }}>CLEAR</button>
 
                     </center>
 
-                    <br /> <br /> <hr /><br /> <br /> 
+                    <br /> <br /> <hr /><br /> <br />
 
 
-                    
-                        <div className="task-addtwo">
 
-                         <center>
-                          <input  value={no1} placeholder="Enter Number1" onChange={(v) => setNo1(v.target.value)}  type="txt" style={{ width: 400, height: 35, padding: 15, fontSize: 30, borderRadius: 30 }} /><br/> <br/>
-                          <input value={no2} onChange={(e) => setNo2(e.target.value)} placeholder="Enter Number2" type="txt" style={{ width: 400, height: 35, padding: 15, fontSize: 30, borderRadius: 30 }}/> <br/>  <br/>
-                          <button  onClick={() => handleClickRes()}  style={{width:300,height:40,borderRadius:10,border:'0.5px solid black'}}>ADD</button><br /> <br />
-                          <p>RESULT {res}</p>
-                          <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
-                          
-                         </center>
-                           
-                        </div>
-                    
+                    <div className="task-addtwo">
 
+                        <center>
+                            <h4>ADD TWO NUMBERS</h4>
+                            <input value={no1} placeholder="Enter Number1" onChange={(v) => setNo1(v.target.value)} type="txt" style={{ width: 400, height: 35, padding: 15, fontSize: 30, borderRadius: 30 }} /><br /> <br />
+                            <input value={no2} onChange={(e) => setNo2(e.target.value)} placeholder="Enter Number2" type="txt" style={{ width: 400, height: 35, padding: 15, fontSize: 30, borderRadius: 30 }} /> <br />  <br />
+                            <button onClick={() => handleClickRes()} style={{ width: 300, height: 40, borderRadius: 10, border: '0.5px solid black' }}>ADD</button><br /> <br />
+                            <p>RESULT {res}</p>
+                            <br /> <br /> <br /> <br /> <br />
 
+                        </center>
+                        <hr /><br /> <br />
+                    </div>
+
+                    <br /> <br />
+
+                    {/* UseReducer */}
+
+                    <div>
+                        <center>
+                            <h5 style={{ fontSize: 120 }}>{state.count}</h5>
+                            <button onClick={() => dispatch({ type: 'INCREMENT' })} style={{ marginRight: 30, padding: 15 }}>INCREMENT</button>
+                            <button  onClick={() => dispatch({type:'DECREMENT'})} style={{ padding: 15 }}>DECREMENT</button>
+                        </center>
+
+                    </div> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br />
 
                 </div>
 
