@@ -1,8 +1,18 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './Home.css';
-import Modal from './modal'
+import Modal from './modal';
+
 export default function Home() {
-    const[isCheckModal,setModal] = useState(false)
+    const [isCheckModal, setModal] = useState(false);
+    
+    const openmodal = () => {
+        setModal(true);
+    };
+
+    const closemodal = () => {
+        setModal(false);
+    };
+
     return (
         <>
             <center>
@@ -11,14 +21,9 @@ export default function Home() {
                 </div>
             </center>
 
-             
             <hr />
-            <button onClick={() => setModal(!isCheckModal)}>CLICK ME</button>
-            {isCheckModal &&
-             <Modal/>
-            }
-            
+            <button onClick={() => openmodal()}>CLICK ME</button>
+            {isCheckModal && <Modal close={closemodal} />}
         </>
-    )
+    );
 }
-
