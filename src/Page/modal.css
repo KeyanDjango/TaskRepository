@@ -1,0 +1,25 @@
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: rgba(0,0,0,0.4);
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal_container{
+    background-color: aliceblue;
+    width:500px;
+    height:300px;
+    border-radius:10px;
+    border:3px solid black;
+}
+.modal-content-btn{
+    display: flex;
+    justify-content: center;
+    position:relative;
+    top:100px;
+    justify-content: space-around;
+}

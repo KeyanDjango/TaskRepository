@@ -19,9 +19,9 @@ export default function NavBar() {
             {/* left nav */}
                 <div class="nav-bar" style={{marginTop:15}}>
                     <nav>
-                        <Link to="/" style={{textDecoration:'none'}}> <button> HOME </button> </Link>
-                        <Link to="/profile"><button> Profile </button></Link>
-                        <Link to="/task"><button> Task </button></Link>
+                        <Link to="/" style={{textDecoration:'none',cursor:'pointer'}}> <button> HOME </button> </Link>
+                        <Link to="/profile" style={{textDecoration:'none',cursor:'pointer'}}><button> Profile </button></Link>
+                        <Link to="/task" style={{textDecoration:'none',cursor:'pointer'}}><button> Task </button></Link>
                     </nav>
 
                 </div>

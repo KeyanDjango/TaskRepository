@@ -1,7 +1,8 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './Home.css';
-
+import Modal from './modal'
 export default function Home() {
+    const[isCheckModal,setModal] = useState(false)
     return (
         <>
             <center>
@@ -10,9 +11,14 @@ export default function Home() {
                 </div>
             </center>
 
-
+             
             <hr />
-
+            <button onClick={() => setModal(!isCheckModal)}>CLICK ME</button>
+            {isCheckModal &&
+             <Modal/>
+            }
+            
         </>
     )
 }
+
